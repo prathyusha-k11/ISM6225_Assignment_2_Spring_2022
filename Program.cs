@@ -128,8 +128,7 @@ namespace ISM6225_Assignment_2_Spring_2022
             {
                 //Write your Code here.
                 //Here i am doing a binary search to first search if the element is present, if not found i am returning the 
-                // position using min or max by comparision as the actual number will be 1 less than min number position or
-                // 1 more than max number position when not found depending on which partition it belongs to
+                // position
                 int min = 0, mid, max = nums.Length - 1, op = 0;
                 while (min <= max)
                 {
