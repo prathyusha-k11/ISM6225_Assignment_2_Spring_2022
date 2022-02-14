@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+
 
 namespace ISM6225_Assignment_2_Spring_2022
 {
@@ -127,6 +127,9 @@ namespace ISM6225_Assignment_2_Spring_2022
             try
             {
                 //Write your Code here.
+                //Here i am doing a binary search to first search if the element is present, if not found i am returning the 
+                // position using min or max by comparision as the actual number will be 1 less than min number position or
+                // 1 more than max number position when not found depending on which partition it belongs to
                 int min = 0, max = nums.Length - 1;
                 while (min < max)
                 {
@@ -181,7 +184,8 @@ namespace ISM6225_Assignment_2_Spring_2022
             {
 
                 //write your code here.
-
+                // Here i am first forming a dictionary of number and its frequency and then removing the banned words and finally
+                //returning word that has max freq
                 string[] para = paragraph.ToLower().Split(new Char[] { '!', '?', '\'', ',', ';', '.', ' ' },
                                  StringSplitOptions.RemoveEmptyEntries);
 
@@ -252,6 +256,8 @@ namespace ISM6225_Assignment_2_Spring_2022
             try
             {
                 //write your code here.
+                // Here i am forming a dictionary of number and its frequency, then checking if the freq is equal to the number itself
+                // and finding maximum of all such values by filtering again within and returning.
                 Dictionary<int, int> d = new Dictionary<int, int>();
                 int[] keys = new int[arr.Length];
                 for (int i = 0; i < arr.Length; i++)
@@ -307,6 +313,10 @@ namespace ISM6225_Assignment_2_Spring_2022
             try
             {
                 //write your code here.
+                // Here i am using two dictionaries to store the index and flag indicating whether that number is counted towards bulls
+                //  or not for both secret and guess words respectively. Then i am using this flag to eliminate bulls numbers and 
+                // then checking for matching numbers in remaining indices and updating flag again to keep track of parsed integers and 
+                // updating cows
                 char[] s = secret.ToCharArray();
                 char[] g = guess.ToCharArray();
                 int bulls = 0, cows = 0;
@@ -382,6 +392,11 @@ namespace ISM6225_Assignment_2_Spring_2022
             try
             {
                 //write your code here.
+                // Here i am using letter - 'a' to get the index of a list of 26 alphabets positions and updating that particular 
+                // index location with the last occurance index. Then i am checking the last occurance of each letter starting from index 0
+                // while moving ahead by keeping track of the number by start and its next occurances by end and when end reaches last
+                // ocuurance whihc is stored in the list earlier, i am partitioning it there and now updating start with end+1 to start next
+                // partition and so on till end of list.
                 int l = s.Length;
 
                 List<int> a = new List<int>();
@@ -441,6 +456,10 @@ namespace ISM6225_Assignment_2_Spring_2022
             try
             {
                 //write your code here.
+                // Here i am getting the width of each character of the string in the widths array and adding it up and whenever it reaches 
+                // sum total greater than 100 i am updating the line count and resetting the total to the excess width that was added in 
+                // the current step which made it greater than 100 to be carried forward to next line. Continuing this process until
+                // all widths are parsed. Last value of total will hold last width over 100 from previous line and hence the last line pixels
                 char[] ss = s.ToCharArray();
                 List<int> l = new List<int>();
                 int tot = 0, count = 1;
@@ -494,6 +513,9 @@ namespace ISM6225_Assignment_2_Spring_2022
             try
             {
                 //write your code here.
+                // Here i am simply checking if there is any open paranthesis and pushing it over a stack to keep track of the order
+                // as stack is LIFO. Using this property of stack to remove the open braces as and when its corresponding end braces occur
+                // while parsing the string in order. If finally stack is empty, then string is valid.
                 Stack<char> open = new Stack<char>();
                 foreach (char c in bulls_string10.ToCharArray())
                 {
@@ -557,6 +579,9 @@ namespace ISM6225_Assignment_2_Spring_2022
             try
             {
                 //write your code here.
+                // Here i am taking all morse codes in a string to use for comparision. Then iterating each word and updating the output
+                // msg by looping over each letter in each word and finding corresponding code in code array by index location.
+                // Then i am checking if there are any duplicates and retaining only unique strings and returning its count.
                 List<string> final = new List<string>();
                 string[] code = { ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.." };
                 for (int i = 0; i < words.Length; i++)
@@ -653,3 +678,22 @@ namespace ISM6225_Assignment_2_Spring_2022
         }
     }
 }
+
+//Self reflection:
+// Q1 :The hint given was quite helpful to solve this problem . I was able to solve this in 10 minutes. But while handling corner cases it failed
+// So i took some time to handle corner cases.
+// Q2: This took me about 30 minutes to solve as the corner cases of empty string in banned words needed to be handled as well as ignoring
+// the punctuations took me some time to figure out. 
+// Q3: This was pretty easy as i needed to find frequency and compare with number which is a simple logic. Thanks for one easy question.
+// Q4: This was the most difficult question of entire assignment (apart from extra qns) . I spent a lot of time on this because there
+// are some corner cases that i was missing. I left solving this at a point of time and revisited at the end of assignment after finishing
+// all questions. This took me like 3 hours or even more to solve. 
+// Q5: This question was also a tricky one and getting the idea to partition took a while. I took an hour for this one.
+// Q6: The logic behind this question did not take much time to arrive at but implementing it brought up some issues of wrong answer for
+// length in last line. It took me an hour.
+// Q7: This was another question which was good to solve . I got the idea of stack as i solved similar problem in btech while learning stacks.
+// So it took me about 15 to 20 min to solve.
+// Q8: This was also an easy one in terms of solution but i took some time to understand how the transformation output should be.
+// Initially i read the question wrong and output combined string length but later corrected it to find unique values.
+// Q9 and Q10: These were too complex for me to solve. I tried to understand the question but they were very difficult to interpret. I will
+// try solving them over the next week or if you could please provide an explanation to these it would be very helpful.
